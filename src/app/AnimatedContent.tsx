@@ -1,12 +1,11 @@
+'use client'
+
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import { ArrowRight, Calendar, User, Shield, Users, FileText, Cake, Building2, Phone } from 'lucide-react'
+import { motion } from 'framer-motion'
 
-// Importações dinâmicas do Framer Motion (sem SSR)
-const MotionDiv = dynamic(() => import('framer-motion').then(mod => mod.motion.div), { ssr: false })
-const MotionSection = dynamic(() => import('framer-motion').then(mod => mod.motion.section), { ssr: false })
-
-export default function Home() {
+export default function AnimatedContent() {
   const features = [
     { icon: Calendar, title: 'Agendamento Inteligente', desc: 'Calendários sincronizados, confirmações e lembretes automáticos' },
     { icon: User, title: 'Gestão Completa de Pacientes', desc: 'Anamnese digital, histórico completo, lembretes de aniversário' },
@@ -65,7 +64,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center relative z-10">
-          <MotionDiv 
+          <motion.div 
             initial={{ opacity: 0, x: -60 }}
             animate={{ opacity: 1, x: 0 }}
             className="space-y-8 lg:max-w-lg"
@@ -125,9 +124,9 @@ export default function Home() {
                 100% LGPD
               </div>
             </div>
-          </MotionDiv>
+          </motion.div>
 
-          <MotionDiv 
+          <motion.div 
             initial={{ opacity: 0, scale: 0.85, x: 40 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
@@ -148,14 +147,14 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </MotionDiv>
+          </motion.div>
         </div>
       </section>
 
       {/* Features */}
-      <MotionSection id="features" className="py-32 px-8">
+      <section id="features" className="py-32 px-8">
         <div className="max-w-7xl mx-auto">
-          <MotionDiv 
+          <motion.div 
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -166,11 +165,11 @@ export default function Home() {
             <p className="text-xl lg:text-2xl text-slate-600 max-w-4xl mx-auto leading-relaxed font-light">
               Interface limpa, velocidade e segurança. Projetado para o dia a dia da psicologia.
             </p>
-          </MotionDiv>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12">
             {features.map((feature, i) => (
-              <MotionDiv 
+              <motion.div 
                 key={i}
                 initial={{ opacity: 0, y: 60 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -184,16 +183,16 @@ export default function Home() {
                   <h3 className="text-2xl lg:text-3xl font-black text-slate-900 mb-6 leading-tight group-hover:text-slate-800">{feature.title}</h3>
                   <p className="text-xl text-slate-600 leading-relaxed font-light">{feature.desc}</p>
                 </div>
-              </MotionDiv>
+              </motion.div>
             ))}
           </div>
         </div>
-      </MotionSection>
+      </section>
 
       {/* Quem Somos */}
       <section id="quem-somos" className="py-32 px-8 bg-gradient-to-t from-slate-900/10 via-slate-50 to-white">
         <div className="max-w-6xl mx-auto text-center">
-          <MotionDiv 
+          <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             className="space-y-8 mb-24"
@@ -204,10 +203,10 @@ export default function Home() {
             <p className="text-xl lg:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
               Desenvolvemos com psicólogos, para psicólogos. Simples, seguro e brasileiro.
             </p>
-          </MotionDiv>
+          </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-16 text-slate-800">
-            <MotionDiv 
+            <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               className="space-y-6 p-10 bg-white/70 rounded-3xl backdrop-blur-xl shadow-xl border border-slate-100/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500"
@@ -219,9 +218,9 @@ export default function Home() {
               <p className="text-lg text-slate-600 leading-relaxed font-light">
                 Navegação intuitiva, zero curva de aprendizado.
               </p>
-            </MotionDiv>
+            </motion.div>
 
-            <MotionDiv 
+            <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
@@ -234,9 +233,9 @@ export default function Home() {
               <p className="text-lg text-slate-600 leading-relaxed font-light">
                 Criptografia ponta a ponta, LGPD completo, acessos controlados.
               </p>
-            </MotionDiv>
+            </motion.div>
 
-            <MotionDiv 
+            <motion.div 
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -249,7 +248,7 @@ export default function Home() {
               <p className="text-lg text-slate-600 leading-relaxed font-light">
                 Equipe brasileira que entende psicologia e tecnologia.
               </p>
-            </MotionDiv>
+            </motion.div>
           </div>
         </div>
       </section>
